@@ -1,8 +1,12 @@
 import { useState } from "react";
 
 interface ChipItemProps {
-  option: string;
-  handleChip: (option: string) => void;
+  option: {
+    id: string;
+    name: string;
+  };
+  handleChip: (id: string) => void;
+  key: string;
 }
 
 const Chip = ({ option, handleChip }: ChipItemProps) => {
@@ -11,11 +15,11 @@ const Chip = ({ option, handleChip }: ChipItemProps) => {
   return (
     <button
       onClick={() => {
-        handleChip(option);
+        handleChip(option.id);
         setSelected(!isSelected);
       }}
     >
-      {option}
+      {option.name}
     </button>
   );
 };
