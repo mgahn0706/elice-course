@@ -1,5 +1,10 @@
 import { useLocation, useNavigate } from "react-router";
 import qs from "qs";
+
+interface SearchQueryType {
+  keyword: string | undefined;
+}
+
 const SearchArea = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -8,15 +13,15 @@ const SearchArea = () => {
       ignoreQueryPrefix: true,
     });
 
-    const newQuery = {
+    const newQuery: SearchQueryType = {
       ...query,
       keyword: input,
     };
-
-    const formattedQuery = new URLSearchParams(newQuery).toString();
+    if (!input) {
+      delete newQuery.keyword;
+    }
+    const formattedQuery = qs.stringify(newQuery, { arrayFormat: "repeat" });
     console.log(newQuery);
-    console.log(formattedQuery);
-
     input.length !== 0 || query.price
       ? navigate(`/all?${formattedQuery}`)
       : navigate(`/`);
