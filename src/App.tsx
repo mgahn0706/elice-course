@@ -1,11 +1,14 @@
-import SearchArea from "./Component/SearchArea/SearchArea";
-import Filter from "./Component/Filter/Filter";
+import { Routes, Navigate } from "react-router-dom";
+import { Route } from "react-router";
+import Main from "./Component/Main";
 
 const App = () => {
   return (
     <div>
-      <SearchArea />
-      <Filter />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/all" element={<Main />} />
+      </Routes>
     </div>
   );
 };
