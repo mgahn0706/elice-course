@@ -7,22 +7,22 @@ const Filter = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
 
+  useEffect(() => {
+    selectedOption.length === 0
+      ? navigate("/")
+      : navigate({
+          pathname: "/all",
+          search: `?price=${selectedOption}`,
+        });
+  }, [selectedOption]);
+
   const handleChip = (option: string) => {
     !selectedOption.includes(option)
       ? setSelectedOption([...selectedOption, option])
       : setSelectedOption(
           selectedOption.filter((optionItem) => option !== optionItem)
         );
-    console.log(selectedOption, option);
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  useEffect(() => {
-    navigate({
-      pathname: "/all",
-      search: `?price=${selectedOption}`,
-    });
-  }, [selectedOption]);
 
   return (
     <div>
