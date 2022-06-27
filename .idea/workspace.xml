@@ -7,8 +7,8 @@
     <list default="true" id="9d7eca91-89b9-44fb-bf4e-e33e68d6ea08" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/CourseBody/CourseBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/CourseBody/CourseBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/CourseBody/CourseCard/CourseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/CourseBody/CourseCard/CourseCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/CourseBody/Pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/CourseBody/Pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Filter/Chip/Chip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Filter/Chip/Chip.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
       <workItem from="1656227120860" duration="132000" />
       <workItem from="1656229400355" duration="2282000" />
       <workItem from="1656231760199" duration="20586000" />
-      <workItem from="1656341614228" duration="6769000" />
+      <workItem from="1656341614228" duration="8698000" />
     </task>
     <servers />
   </component>

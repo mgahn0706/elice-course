@@ -14,11 +14,12 @@ interface CourseType {
 const CourseBody = () => {
   const [courseData, setCourseData] = useState<CourseType[]>([]);
   const [currPage, setCurrPage] = useState<number>(1);
+  const [courseLength, setCourseLength] = useState<number>(0);
   useEffect(() => {
     getCourseList({
       filter_conditions: JSON.stringify({
         $and: [
-          { title: "%자바%" },
+          { title: "%파이썬%" },
           {
             $or: [
               { enroll_type: 0, is_free: true },
@@ -27,22 +28,28 @@ const CourseBody = () => {
           },
         ],
       }),
-      offset: 0,
+      offset: 20 * (currPage - 1),
       count: 20,
     }).then((res) => {
+      console.log(res);
       setCourseData(res.courses);
+      setCourseLength(res.course_count);
     });
-  }, []);
+  }, [currPage]);
 
   return (
     <div>
-      <p>전체 {courseData.length}개</p>
+      <p>전체 {courseLength}개</p>
 
       {courseData.map((item) => (
         <CourseCard key={item.id} course={item} />
       ))}
 
-      <Pagination currPage={currPage} />
+      <Pagination
+        currPage={currPage}
+        setCurrPage={setCurrPage}
+        courseLength={courseLength}
+      />
     </div>
   );
 };

@@ -20,6 +20,7 @@ const Chip = ({ option, handleChip }: ChipItemProps) => {
       }}
     >
       {option.name}
+      {isSelected ? "선" : "낫"}
     </button>
   );
 };
