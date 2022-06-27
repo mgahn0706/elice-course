@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 import qs from "qs";
+import { useEffect, useState } from "react";
 
 interface SearchQueryType {
   keyword: string | undefined;
@@ -8,6 +9,8 @@ interface SearchQueryType {
 const SearchArea = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchKeyword, setSearchKeyword] = useState<string | undefined>("");
+
   const handleSearch = (input: string) => {
     const query = qs.parse(location.search, {
       ignoreQueryPrefix: true,
@@ -20,8 +23,8 @@ const SearchArea = () => {
     if (!input) {
       delete newQuery.keyword;
     }
+    setSearchKeyword(input);
     const formattedQuery = qs.stringify(newQuery, { arrayFormat: "repeat" });
-    console.log(newQuery);
     input.length !== 0 || query.price
       ? navigate(`/all?${formattedQuery}`)
       : navigate(`/`);
@@ -33,6 +36,7 @@ const SearchArea = () => {
       onChange={(e) => {
         handleSearch(e.target.value);
       }}
+      value={searchKeyword}
     />
   );
 };
