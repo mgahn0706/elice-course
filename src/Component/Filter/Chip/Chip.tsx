@@ -1,26 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ChipItemProps {
   option: {
     id: string;
     name: string;
+    isSelected: boolean;
   };
   handleChip: (id: string) => void;
   key: string;
 }
 
 const Chip = ({ option, handleChip }: ChipItemProps) => {
-  const [isSelected, setSelected] = useState<boolean>(false);
-
   return (
     <button
       onClick={() => {
         handleChip(option.id);
-        setSelected(!isSelected);
       }}
     >
       {option.name}
-      {isSelected ? "선" : "낫"}
+      {option.isSelected ? "선" : "낫"}
     </button>
   );
 };

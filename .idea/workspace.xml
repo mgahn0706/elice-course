@@ -9,6 +9,8 @@
       <change beforePath="$PROJECT_DIR$/src/Component/CourseBody/CourseBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/CourseBody/CourseBody.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/CourseBody/Pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/CourseBody/Pagination/Pagination.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/Filter/Chip/Chip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Filter/Chip/Chip.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Filter/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Filter/Filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/SearchArea/SearchArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SearchArea/SearchArea.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,7 @@
       <workItem from="1656227120860" duration="132000" />
       <workItem from="1656229400355" duration="2282000" />
       <workItem from="1656231760199" duration="20586000" />
-      <workItem from="1656341614228" duration="8698000" />
+      <workItem from="1656341614228" duration="17548000" />
     </task>
     <servers />
   </component>

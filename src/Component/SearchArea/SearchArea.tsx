@@ -9,13 +9,23 @@ interface SearchQueryType {
 const SearchArea = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchKeyword, setSearchKeyword] = useState<string | undefined>("");
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
+
+  const getQueryData = () => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get("keyword");
+    setSearchKeyword(search ? search : "");
+  };
+
+  useEffect(() => {
+    getQueryData();
+  }, []);
 
   const handleSearch = (input: string) => {
     const query = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-
+    setSearchKeyword(input);
     const newQuery: SearchQueryType = {
       ...query,
       keyword: input,
@@ -23,7 +33,7 @@ const SearchArea = () => {
     if (!input) {
       delete newQuery.keyword;
     }
-    setSearchKeyword(input);
+
     const formattedQuery = qs.stringify(newQuery, { arrayFormat: "repeat" });
     input.length !== 0 || query.price
       ? navigate(`/all?${formattedQuery}`)

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getCourseList } from "../../API/API";
 import CourseCard from "./CourseCard/CourseCard";
 import Pagination from "./Pagination/Pagination";
+import qs from "qs";
+import { useLocation, useParams } from "react-router";
 
 interface CourseType {
   title: string;
@@ -11,19 +13,47 @@ interface CourseType {
   short_description: string;
   logo_file_url: string;
 }
+
+interface QueryType {
+  price: string[];
+  keyword: string | null;
+}
+
 const CourseBody = () => {
   const [courseData, setCourseData] = useState<CourseType[]>([]);
   const [currPage, setCurrPage] = useState<number>(1);
   const [courseLength, setCourseLength] = useState<number>(0);
+  const [queryData, setQueryData] = useState<QueryType>({
+    price: [],
+    keyword: "",
+  });
+
+  const getQueryData = () => {
+    const params = new URLSearchParams(location.search);
+    const newQueryData = {
+      price: params.getAll("price"),
+      keyword: params.get("keyword"),
+    };
+    setQueryData(newQueryData);
+  };
+
+  useEffect(() => {
+    getQueryData();
+  }, []);
+
   useEffect(() => {
     getCourseList({
       filter_conditions: JSON.stringify({
         $and: [
-          { title: "%파이썬%" },
+          { title: `%${queryData.keyword}%` },
           {
             $or: [
-              { enroll_type: 0, is_free: true },
-              { enroll_type: 0, is_free: false },
+              queryData.price.includes("free")
+                ? { enroll_type: 0, is_free: true }
+                : {},
+              queryData.price.includes("paid")
+                ? { enroll_type: 0, is_free: false }
+                : {},
             ],
           },
         ],
@@ -31,11 +61,10 @@ const CourseBody = () => {
       offset: 20 * (currPage - 1),
       count: 20,
     }).then((res) => {
-      console.log(res);
       setCourseData(res.courses);
       setCourseLength(res.course_count);
     });
-  }, [currPage]);
+  }, [currPage, queryData]);
 
   return (
     <div>

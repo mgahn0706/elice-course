@@ -12,7 +12,6 @@ const Pagination = ({
   courseLength,
 }: PaginationProps) => {
   const [pageList, setPageList] = useState<number[]>([]);
-
   const calculatePage = () => {
     const newPageList = [
       currPage - 4,
@@ -26,12 +25,11 @@ const Pagination = ({
       currPage + 4,
     ].filter((num) => num > 0 && num <= Math.ceil(courseLength / 20));
     setPageList(newPageList);
-    console.log(pageList, newPageList);
   };
 
   useEffect(() => {
     calculatePage();
-  }, [currPage]);
+  }, [currPage, courseLength]);
 
   return (
     <div>
