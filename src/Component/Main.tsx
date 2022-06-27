@@ -1,7 +1,7 @@
 import SearchArea from "./SearchArea/SearchArea";
 import Filter from "./Filter/Filter";
 import CourseBody from "./CourseBody/CourseBody";
-import Pagination from "./Pagination/Pagination";
+import Pagination from "./CourseBody/Pagination/Pagination";
 
 const Main = () => {
   return (
