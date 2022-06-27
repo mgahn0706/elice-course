@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
 import { getCourseList } from "../../API/API";
+import CourseCard from "./CourseCard/CourseCard";
+import Pagination from "./Pagination/Pagination";
 
 interface CourseType {
   title: string;
   id: number;
+  enroll_type: number;
+  is_free: boolean;
+  short_description: string;
+  logo_file_url: string;
 }
-
 const CourseBody = () => {
-  const courseDummy = ["C++", "React", "JavaScript"];
   const [courseData, setCourseData] = useState<CourseType[]>([]);
-
+  const [currPage, setCurrPage] = useState<number>(1);
   useEffect(() => {
     getCourseList({
       filter_conditions: JSON.stringify({
         $and: [
-          { title: "%c언어%" },
+          { title: "%자바%" },
           {
             $or: [
               { enroll_type: 0, is_free: true },
@@ -35,8 +39,10 @@ const CourseBody = () => {
       <p>전체 {courseData.length}개</p>
 
       {courseData.map((item) => (
-        <div key={item.id}>{item.title}</div>
+        <CourseCard key={item.id} course={item} />
       ))}
+
+      <Pagination currPage={currPage} />
     </div>
   );
 };
