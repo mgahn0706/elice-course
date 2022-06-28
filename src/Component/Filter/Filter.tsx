@@ -2,15 +2,10 @@ import Chip from "./Chip/Chip";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import qs from "qs";
+import { OptionType } from "../../Interface/Interface";
 
 interface ChipQueryType {
   price: string[] | undefined;
-}
-
-interface OptionType {
-  id: string;
-  name: string;
-  isSelected: boolean;
 }
 
 const Filter = () => {

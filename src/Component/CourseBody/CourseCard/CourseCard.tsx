@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
-import "../../../Styles/Components/_courseCard.scss"
-interface CourseType {
-  title: string;
-  id: number;
-  enroll_type: number;
-  is_free: boolean;
-  short_description: string;
-  logo_file_url: string;
-}
+import "../../../Styles/Components/_courseCard.scss";
+import { CourseType } from "../../../Interface/Interface";
 
 interface CourseCardProps {
   course: CourseType;
@@ -32,15 +25,19 @@ const CourseCard = ({ course }: CourseCardProps) => {
       <label className="label">{label}</label>
       <p className="title">{course.title}</p>
       <p className="description">{course.short_description}</p>
-        <div className="detailContainer">
-            <div className="infoContainer">
-                <p className="info">난이도 : 미설정</p>
-                <p className="info">수업: 온라인</p>
-                <p className="info">기간: 무제한</p>
-            </div>
-            <img className="logo" src={course.logo_file_url} alt={`${course.title} 로고`} />
+      <div className="detailContainer">
+        <div className="infoContainer">
+          <p className="info">난이도 : 미설정</p>
+          <p className="info">수업: 온라인</p>
+          <p className="info">기간: 무제한</p>
         </div>
-</div>
+        <img
+          className="logo"
+          src={course.logo_file_url}
+          alt={`${course.title} 로고`}
+        />
+      </div>
+    </div>
   );
 };
 

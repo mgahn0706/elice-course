@@ -32,6 +32,8 @@ _variables 등 SCSS의 변수 기능을 사용해 엘리스의 디자인 컬러 
  - Debounced Search: Lodash로 구현, 또는 useDebounce 커스텀 훅을 짜서 구현 가능
  - 창 크기에 따른 반응형 처리: display: grid만으로는 깔끔한 처리가 힘들어서 Bootstrap이나 mui등의 외부 라이브러리 사용이 좋을 듯
  - detail한 스타일 구현: UX를 위한 트랜지션, cursor 등
+ - 카드 크기에 따라 title, description "..." 표시
+
 
 
 

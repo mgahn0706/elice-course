@@ -14,8 +14,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="SCSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -53,6 +53,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mingyu\elice\src\Interface" />
       <recent name="C:\Users\user\elice-course\src\Component\CourseBody" />
     </key>
   </component>
@@ -73,7 +74,7 @@
       <workItem from="1656341614228" duration="17548000" />
       <workItem from="1656367901047" duration="4494000" />
       <workItem from="1656372644706" duration="882000" />
-      <workItem from="1656403573715" duration="19944000" />
+      <workItem from="1656403573715" duration="20688000" />
     </task>
     <servers />
   </component>

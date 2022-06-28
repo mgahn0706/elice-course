@@ -2,23 +2,11 @@ import { useEffect, useState } from "react";
 import { getCourseList } from "../../API/API";
 import CourseCard from "./CourseCard/CourseCard";
 import Pagination from "./Pagination/Pagination";
-import {useLocation} from "react-router";
-import "../../Styles/Components/_courseBody.scss"
-interface CourseType {
-  title: string;
-  id: number;
-  enroll_type: number;
-  is_free: boolean;
-  short_description: string;
-  logo_file_url: string;
-}
+import { useLocation } from "react-router";
+import "../../Styles/Components/_courseBody.scss";
+import { CourseType, QueryType } from "../../Interface/Interface";
 
-interface QueryType {
-  price: string[];
-  keyword: string | null;
-}
-
-const CourseBody = ()=> {
+const CourseBody = () => {
   const location = useLocation();
   const [courseData, setCourseData] = useState<CourseType[]>([]);
   const [currPage, setCurrPage] = useState<number>(1);
@@ -39,15 +27,15 @@ const CourseBody = ()=> {
   };
 
   const formatPrice = (price: string) => {
-    switch (price){
+    switch (price) {
       case "free":
-        return {enroll_type: 0, is_free:true}
+        return { enroll_type: 0, is_free: true };
       case "paid":
-        return {enroll_type: 0, is_free: false}
+        return { enroll_type: 0, is_free: false };
       default:
         return {};
     }
-  }
+  };
 
   useEffect(() => {
     getQueryData();
@@ -57,12 +45,11 @@ const CourseBody = ()=> {
     getCourseList({
       filter_conditions: JSON.stringify({
         $and: [
-          queryData.keyword ?{ title: `%${queryData.keyword}%`} : {},
+          queryData.keyword ? { title: `%${queryData.keyword}%` } : {},
           {
-            $or:
-              queryData.price ?
-                  queryData.price.map(price => formatPrice(price)) : []
-            ,
+            $or: queryData.price
+              ? queryData.price.map((price) => formatPrice(price))
+              : [],
           },
         ],
       }),
@@ -78,15 +65,15 @@ const CourseBody = ()=> {
     <div>
       <p>전체 {courseLength}개</p>
 
-      {courseLength===0 ? <div className="noResult">검색 결과가 없습니다.</div> :
-          <div className="courseContainer">
-        {courseData.map((item) => (
+      {courseLength === 0 ? (
+        <div className="noResult">검색 결과가 없습니다.</div>
+      ) : (
+        <div className="courseContainer">
+          {courseData.map((item) => (
             <CourseCard key={item.id} course={item} />
-        ))}
-
-      </div>}
-
-
+          ))}
+        </div>
+      )}
 
       <Pagination
         currPage={currPage}
