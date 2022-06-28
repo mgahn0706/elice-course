@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "../../../Styles/Components/_pagination.scss"
 interface PaginationProps {
   currPage: number;
   courseLength: number;
@@ -32,10 +32,12 @@ const Pagination = ({
   }, [currPage, courseLength]);
 
   return (
-    <div>
+    <div className="pagination">
+      <button className={`${currPage===1 ? "disabledArrow" : "Arrow"}`}> ← </button>
       {pageList.map((item) => {
         return (
           <button
+              className={currPage===item ? "currPage" : "Page"}
             key={item}
             onClick={() => {
               setCurrPage(item);
@@ -44,7 +46,9 @@ const Pagination = ({
             {item}
           </button>
         );
+
       })}
+      <button  className={`${currPage===Math.ceil(courseLength / 20) ? "disabledArrow" : "Arrow"}`}> → </button>
     </div>
   );
 };

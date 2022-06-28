@@ -4,7 +4,7 @@ import Main from "./Component/Main";
 
 const App = () => {
   return (
-    <div>
+    <div className="layout">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/all" element={<Main />} />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "../../../Styles/Components/_courseCard.scss"
 interface CourseType {
   title: string;
   id: number;
@@ -28,15 +28,19 @@ const CourseCard = ({ course }: CourseCardProps) => {
   }, []);
 
   return (
-    <div>
-      <label>{label}</label>
-      <p>{course.title}</p>
-      <p>{course.short_description}</p>
-      <p>난이도 : 미설정</p>
-      <p>수업: 온라인</p>
-      <p>기간: 무제한</p>
-      <img src={course.logo_file_url} alt={`${course.title} 로고`} />
-    </div>
+    <div className="card">
+      <label className="label">{label}</label>
+      <p className="title">{course.title}</p>
+      <p className="description">{course.short_description}</p>
+        <div className="detailContainer">
+            <div className="infoContainer">
+                <p className="info">난이도 : 미설정</p>
+                <p className="info">수업: 온라인</p>
+                <p className="info">기간: 무제한</p>
+            </div>
+            <img className="logo" src={course.logo_file_url} alt={`${course.title} 로고`} />
+        </div>
+</div>
   );
 };
 

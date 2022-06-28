@@ -1,0 +1,23 @@
+.searchIcon{
+  width: 16px;
+}
+
+.icon{
+  margin: 16px 16px;
+
+}
+
+.searchArea{
+  width: 100%;
+  border: rgb(201, 202, 204) 1px;
+  border-radius: 4px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input{
+  padding: 12px 0;
+  border: none;
+  width: 95%;
+}

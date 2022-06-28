@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import "../../../Styles/Components/_chip.scss"
 
 interface ChipItemProps {
   option: {
@@ -16,9 +16,10 @@ const Chip = ({ option, handleChip, selectedOption }: ChipItemProps) => {
       onClick={() => {
         handleChip(option.id);
       }}
+      className={`chip${selectedOption.includes(option.id)? "Enabled" : "Disabled"}`}
     >
       {option.name}
-      {selectedOption.includes(option.id)? "선" : "낫"}
+
     </button>
   );
 };

@@ -1,0 +1,35 @@
+.Page{
+  border: none;
+  color: #999999;
+  background: none;
+  cursor: pointer;
+}
+
+.currPage{
+  border: none;
+  color: white;
+  background: #524fa1;
+  cursor: pointer;
+}
+.disabledArrow{
+  border: none;
+  color: #cccccc;
+  background: none;
+  cursor: pointer;
+}
+
+.Arrow{
+  border:none;
+  color: #222222;
+  background: none;
+  cursor: pointer;
+}
+
+.pagination{
+  text-align: center;
+
+}
+
+.pagination.button{
+  width: 100px;
+}

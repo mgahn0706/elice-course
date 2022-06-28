@@ -1,0 +1,21 @@
+.chipEnabled{
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+  background: #524fa1;
+  color: white;
+  cursor: pointer;
+  width: 50px;
+  height: 20px;
+}
+
+.chipDisabled{
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+  background: lightgrey;
+  color: #222222;
+  cursor: pointer;
+  width: 50px;
+  height: 20px;
+}

@@ -3,7 +3,7 @@ import { getCourseList } from "../../API/API";
 import CourseCard from "./CourseCard/CourseCard";
 import Pagination from "./Pagination/Pagination";
 import {useLocation} from "react-router";
-
+import "../../Styles/Components/_courseBody.scss"
 interface CourseType {
   title: string;
   id: number;
@@ -78,9 +78,15 @@ const CourseBody = ()=> {
     <div>
       <p>전체 {courseLength}개</p>
 
-      {courseData.map((item) => (
-        <CourseCard key={item.id} course={item} />
-      ))}
+      {courseLength===0 ? <div className="noResult">검색 결과가 없습니다.</div> :
+          <div className="courseContainer">
+        {courseData.map((item) => (
+            <CourseCard key={item.id} course={item} />
+        ))}
+
+      </div>}
+
+
 
       <Pagination
         currPage={currPage}

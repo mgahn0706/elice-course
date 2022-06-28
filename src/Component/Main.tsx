@@ -1,7 +1,7 @@
 import SearchArea from "./SearchArea/SearchArea";
 import Filter from "./Filter/Filter";
 import CourseBody from "./CourseBody/CourseBody";
-import {useEffect, useState} from "react";
+import  '../Styles/Components/_layout.scss'
 
 interface QueryType {
     price: string[];
@@ -10,7 +10,7 @@ interface QueryType {
 const Main = () => {
 
   return (
-    <div>
+    <div className="container">
       <SearchArea />
       <Filter />
       <CourseBody />

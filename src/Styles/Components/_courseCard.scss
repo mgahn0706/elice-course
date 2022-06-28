@@ -1,0 +1,43 @@
+.card{
+  width: 296px;
+  height: 338px;
+  border-radius: 8px;
+  padding: 28px 24px;
+  background: white;
+}
+
+.label{
+  font-size: 12px;
+  color: #524fa1;
+  font-weight: bold;
+}
+
+.title{
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #222222;
+}
+
+.description{
+  font-size: 14px;
+  color: #5e5f61;
+  line-height: 1.6;
+}
+
+.info{
+  font-size: 12px;
+  color: #7d7e80;
+
+}
+
+.logo{
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+}
+
+.detailContainer{
+  display: flex;
+  justify-content: space-between;
+}
