@@ -3,6 +3,9 @@
   color: #999999;
   background: none;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
 }
 
 .currPage{
@@ -10,12 +13,18 @@
   color: white;
   background: #524fa1;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
 }
 .disabledArrow{
   border: none;
   color: #cccccc;
   background: none;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
 }
 
 .Arrow{
@@ -23,13 +32,13 @@
   color: #222222;
   background: none;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
 }
 
 .pagination{
   text-align: center;
-
+  margin: 32px;
 }
 
-.pagination.button{
-  width: 100px;
-}
