@@ -35,7 +35,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
       <p>난이도 : 미설정</p>
       <p>수업: 온라인</p>
       <p>기간: 무제한</p>
-      <img src={course.logo_file_url} alt={"수업 로고"} />
+      <img src={course.logo_file_url} alt={`${course.title} 로고`} />
     </div>
   );
 };

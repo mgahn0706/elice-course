@@ -71,7 +71,6 @@ const CourseBody = ()=> {
     }).then((res) => {
       setCourseData(res.courses);
       setCourseLength(res.course_count);
-      console.log(queryData)
     });
   }, [currPage, queryData]);
 
