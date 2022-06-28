@@ -1,6 +1,6 @@
 import Chip from "./Chip/Chip";
 import { useEffect, useState } from "react";
-import {useLocation, useNavigate} from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import qs from "qs";
 
 interface ChipQueryType {
@@ -29,13 +29,11 @@ const Filter = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
-  const [isFirstRender, setFirstRender] = useState(true);
 
   const getQueryChipData = () => {
     const params = new URLSearchParams(location.search);
     const queryPriceList = params.getAll("price");
     setSelectedOption(queryPriceList);
-
   };
 
   useEffect(() => {
@@ -43,7 +41,6 @@ const Filter = () => {
   }, []);
 
   const handleFilter = () => {
-
     const query = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
@@ -60,7 +57,7 @@ const Filter = () => {
 
   useEffect(() => {
     //isFirstRender ? setFirstRender(false) :
-        handleFilter();
+    handleFilter();
   }, [selectedOption]);
 
   const handleChip = (id: string) => {
@@ -73,17 +70,20 @@ const Filter = () => {
     });
 
     setOptionList(newOptionList);
-    console.log(newOptionList, optionList)
-      !selectedOption.includes(id)
-          ? setSelectedOption([...selectedOption, id])
-          : setSelectedOption(selectedOption.filter((idItem) => id !== idItem));
-
+    !selectedOption.includes(id)
+      ? setSelectedOption([...selectedOption, id])
+      : setSelectedOption(selectedOption.filter((idItem) => id !== idItem));
   };
 
   return (
     <div>
       {optionList.map((optionItem) => (
-        <Chip key={optionItem.id} option={optionItem} handleChip={handleChip} selectedOption={selectedOption} />
+        <Chip
+          key={optionItem.id}
+          option={optionItem}
+          handleChip={handleChip}
+          selectedOption={selectedOption}
+        />
       ))}
     </div>
   );

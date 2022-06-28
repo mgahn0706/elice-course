@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# 엘리스 코스 검색 구현
+##안민규
+### 상태관리
+상태는 로컬에서 모두 관리하며, 검색어나 chip 상태는 urlSearchParams를 이용하여 필요한 컴포넌트에 저장한다.
+ContextAPI를 쓰기에는 값 변경이 자주 일어나므로 부적절하다고 생각했다.
+앱 크기가 커진다면 Redux 등의 라이브러리로 리팩토링할 필요가 있다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 코드 스타일
+Prettier와 ESlint 적용
 
-## Available Scripts
+### 프로젝트 구조
+Main 컴포넌트 아래에 검색, 필터, 코스 컴포를 두고 각 컴포를 기능별로 분리.
+API 함수는 따로 뻈으며, Style 파일은 Styles 폴더에서 따로 관리함.
 
-In the project directory, you can run:
+### 사용 IDE
+WebStorm 2022.01
 
-### `npm start`
+### 사용언어
+TypeScript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+###서버 통신
+CORS에러는 Chrome의 CORS 플러그인을 사용.
+가독성이 좋은 async, await 문법을 사용하여 axios 라이브러리를 이용해 통신.
+API 문서는 분리하여 관리.
+API를 포매팅하는 함수는 CourseBody 컴포넌트에 위치해있는데, price뿐만 아니라 다른 옵션들이 추가되는 것을 대비하여 함수를 분리할 필요가 있음.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 스타일
+SCSS를 import하여 사용. 배포 횟수가 적으며, 사용자에게 직접 보이는 사이트이므로 CSS-in-JS보다는 SCSS를 선택.
+_variables 등 SCSS의 변수 기능을 사용해 엘리스의 디자인 컬러 등을 지정하면 좋아질 것.
 
-### `npm test`
+### 구현하지 못한 것
+ - Debounced Search: Lodash로 구현, 또는 useDebounce 커스텀 훅을 짜서 구현 가능
+ - 창 크기에 따른 반응형 처리: display: grid만으로는 깔끔한 처리가 힘들어서 Bootstrap이나 mui등의 외부 라이브러리 사용이 좋을 듯
+ - detail한 스타일 구현: UX를 위한 트랜지션, cursor 등
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
