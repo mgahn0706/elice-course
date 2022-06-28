@@ -24,7 +24,6 @@ const CourseBody = ()=> {
   const [currPage, setCurrPage] = useState<number>(1);
   const [courseLength, setCourseLength] = useState<number>(0);
 
-
   const [queryData, setQueryData] = useState<QueryType>({
     price: [],
     keyword: "",
@@ -39,6 +38,17 @@ const CourseBody = ()=> {
     setQueryData(newQueryData);
   };
 
+  const formatPrice = (price: string) => {
+    switch (price){
+      case "free":
+        return {enroll_type: 0, is_free:true}
+      case "paid":
+        return {enroll_type: 0, is_free: false}
+      default:
+        return {};
+    }
+  }
+
   useEffect(() => {
     getQueryData();
   }, [location]);
@@ -47,16 +57,12 @@ const CourseBody = ()=> {
     getCourseList({
       filter_conditions: JSON.stringify({
         $and: [
-          { title: `%${queryData.keyword}%` },
+          queryData.keyword ?{ title: `%${queryData.keyword}%`} : {},
           {
-            $or: [
-              queryData.price.includes("free")
-                ? { enroll_type: 0, is_free: true }
-                : {},
-              queryData.price.includes("paid")
-                ? { enroll_type: 0, is_free: false }
-                : {},
-            ],
+            $or:
+              queryData.price ?
+                  queryData.price.map(price => formatPrice(price)) : []
+            ,
           },
         ],
       }),
@@ -65,8 +71,9 @@ const CourseBody = ()=> {
     }).then((res) => {
       setCourseData(res.courses);
       setCourseLength(res.course_count);
+      console.log(queryData)
     });
-  }, [currPage, queryData, location]);
+  }, [currPage, queryData]);
 
   return (
     <div>
