@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { getCourseList } from "../../API/API";
 import CourseCard from "./CourseCard/CourseCard";
 import Pagination from "./Pagination/Pagination";
-import qs from "qs";
-import { useLocation, useParams } from "react-router";
+import {useLocation} from "react-router";
 
 interface CourseType {
   title: string;
@@ -19,10 +18,13 @@ interface QueryType {
   keyword: string | null;
 }
 
-const CourseBody = () => {
+const CourseBody = ()=> {
+  const location = useLocation();
   const [courseData, setCourseData] = useState<CourseType[]>([]);
   const [currPage, setCurrPage] = useState<number>(1);
   const [courseLength, setCourseLength] = useState<number>(0);
+
+
   const [queryData, setQueryData] = useState<QueryType>({
     price: [],
     keyword: "",
@@ -39,7 +41,7 @@ const CourseBody = () => {
 
   useEffect(() => {
     getQueryData();
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     getCourseList({
@@ -64,7 +66,7 @@ const CourseBody = () => {
       setCourseData(res.courses);
       setCourseLength(res.course_count);
     });
-  }, [currPage, queryData]);
+  }, [currPage, queryData, location]);
 
   return (
     <div>

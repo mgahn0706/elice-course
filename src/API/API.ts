@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 const COURSE_URL = "https://api-rest.elice.io/org/academy/course/list/";
 

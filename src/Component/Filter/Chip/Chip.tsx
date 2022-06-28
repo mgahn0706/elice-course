@@ -4,13 +4,13 @@ interface ChipItemProps {
   option: {
     id: string;
     name: string;
-    isSelected: boolean;
   };
   handleChip: (id: string) => void;
   key: string;
+  selectedOption: string[];
 }
 
-const Chip = ({ option, handleChip }: ChipItemProps) => {
+const Chip = ({ option, handleChip, selectedOption }: ChipItemProps) => {
   return (
     <button
       onClick={() => {
@@ -18,7 +18,7 @@ const Chip = ({ option, handleChip }: ChipItemProps) => {
       }}
     >
       {option.name}
-      {option.isSelected ? "선" : "낫"}
+      {selectedOption.includes(option.id)? "선" : "낫"}
     </button>
   );
 };

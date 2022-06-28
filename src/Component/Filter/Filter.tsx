@@ -1,6 +1,6 @@
 import Chip from "./Chip/Chip";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import {useLocation, useNavigate} from "react-router";
 import qs from "qs";
 
 interface ChipQueryType {
@@ -27,6 +27,7 @@ const Filter = () => {
     },
   ]);
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
   const [isFirstRender, setFirstRender] = useState(true);
 
@@ -34,37 +35,32 @@ const Filter = () => {
     const params = new URLSearchParams(location.search);
     const queryPriceList = params.getAll("price");
     setSelectedOption(queryPriceList);
-    queryPriceList.forEach((id) => {
-      handleChip(id);
-    });
+
   };
 
   useEffect(() => {
     getQueryChipData();
   }, []);
 
-  const handleFilter = (optionList: string[]) => {
+  const handleFilter = () => {
+
     const query = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-
     const newQuery: ChipQueryType = {
       ...query,
-      price: optionList,
+      price: selectedOption,
     };
 
-    if (!optionList) {
-      delete newQuery.price;
-    }
-
     const formattedQuery = qs.stringify(newQuery, { arrayFormat: "repeat" });
-    optionList.length !== 0 || query.keyword
+    selectedOption.length !== 0 || query.keyword
       ? navigate(`/all?${formattedQuery}`)
       : navigate(`/`);
   };
 
   useEffect(() => {
-    isFirstRender ? setFirstRender(false) : handleFilter(selectedOption);
+    //isFirstRender ? setFirstRender(false) :
+        handleFilter();
   }, [selectedOption]);
 
   const handleChip = (id: string) => {
@@ -75,17 +71,19 @@ const Filter = () => {
         return opt;
       }
     });
-    setOptionList(newOptionList);
 
-    !selectedOption.includes(id)
-      ? setSelectedOption([...selectedOption, id])
-      : setSelectedOption(selectedOption.filter((idItem) => id !== idItem));
+    setOptionList(newOptionList);
+    console.log(newOptionList, optionList)
+      !selectedOption.includes(id)
+          ? setSelectedOption([...selectedOption, id])
+          : setSelectedOption(selectedOption.filter((idItem) => id !== idItem));
+
   };
 
   return (
     <div>
       {optionList.map((optionItem) => (
-        <Chip key={optionItem.id} option={optionItem} handleChip={handleChip} />
+        <Chip key={optionItem.id} option={optionItem} handleChip={handleChip} selectedOption={selectedOption} />
       ))}
     </div>
   );
